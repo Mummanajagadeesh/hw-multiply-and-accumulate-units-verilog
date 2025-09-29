@@ -18,16 +18,16 @@ The first implemented datapath combines a **Modified Booth Multiplier (MBE)** wi
 The multiplier employs **radix-4 Booth recoding** to reduce the number of partial products.
 For a multiplicand (M) and multiplier (Q), triplets of bits from (Q) are recoded into signed multiples of (M):
 
-[
+$$
 PP =
 \begin{cases}
-0 & \text{if } (q_{i+1} q_i q_{i-1}) \in {000,111} \
-+M & \text{if } (q_{i+1} q_i q_{i-1}) \in {001,010} \
-+2M & \text{if } (q_{i+1} q_i q_{i-1}) = 011 \
--2M & \text{if } (q_{i+1} q_i q_{i-1}) = 100 \
--M  & \text{if } (q_{i+1} q_i q_{i-1}) \in {101,110}
+0 & \text{if } (q_{i+1} q_i q_{i-1}) \in \{000,111\} \\
++M & \text{if } (q_{i+1} q_i q_{i-1}) \in \{001,010\} \\
++2M & \text{if } (q_{i+1} q_i q_{i-1}) = 011 \\
+-2M & \text{if } (q_{i+1} q_i q_{i-1}) = 100 \\
+-M  & \text{if } (q_{i+1} q_i q_{i-1}) \in \{101,110\}
 \end{cases}
-]
+$$
 
 This reduces the number of partial products by approximately half, lowering the depth of subsequent accumulation stages.
 
@@ -41,12 +41,12 @@ This reduces the number of partial products by approximately half, lowering the 
 
 A CSA is employed for fast accumulation of three operands without immediate carry propagation:
 
-[
+$$
 \begin{aligned}
-S_i &= A_i \oplus B_i \oplus C_i \
-C_i &= (A_iB_i) ; \lor ; (B_iC_i) ; \lor ; (C_iA_i)
+S_i &= A_i \oplus B_i \oplus C_i \\
+C_i &= (A_iB_i) \lor (B_iC_i) \lor (C_iA_i)
 \end{aligned}
-]
+$$
 
 The outputs are a **sum vector** and a **carry vector**, which are combined later by a final adder.
 
@@ -60,14 +60,14 @@ The outputs are a **sum vector** and a **carry vector**, which are combined late
 
 The MAC datapath integrates the MBE multiplier and CSA as follows:
 
-1. **MBE Multiplier** computes the product (P = A \times B).
-2. **CSA** reduces ((P, \text{Acc}_{in}, 0)) into sum and carry vectors.
+1. **MBE Multiplier** computes the product ($P = A \times B$).
+2. **CSA** reduces $(P, \text{Acc}_{in}, 0)$ into sum and carry vectors.
 3. **Shifter** aligns the carry.
-4. **Final Adder** resolves the two-vector representation into (\text{Acc}_{out}).
+4. **Final Adder** resolves the two-vector representation into $\text{Acc}_{out}$.
 
-[
-\text{Acc}*{out} = (A \times B) + \text{Acc}*{in}
-]
+$$
+\text{Acc}_{out} = (A \times B) + \text{Acc}_{in}
+$$
 
 **Yosys Netlist (MAC):**
 ![MAC Netlist](./mbe-csa-b/mac/mac_unit.png)
@@ -80,11 +80,11 @@ The MAC datapath integrates the MBE multiplier and CSA as follows:
 The same MAC building block can be tiled to construct larger computational units. For example:
 
 * **Processing Element (PE):**
-  ![PE Netlist](./mbe-csa-b/pe/pe_unit.png)
+  ![PE Netlist](./mbe-csa-b/pe/pe_unit.png)  
   *PE integrating a MAC with local register and forwarding logic.*
 
 * **Systolic Array:**
-  ![Systolic Array Netlist](./mbe-csa-b/systolic/systolic_unit.png)
+  ![Systolic Array Netlist](./mbe-csa-b/systolic/systolic_unit.png)  
   *Two-dimensional systolic arrangement for parallel matrix multiplication. Lower hierarchical blocks are hidden for brevity.*
 
 ---
@@ -95,4 +95,4 @@ The same MAC building block can be tiled to construct larger computational units
 * **CSA accelerates accumulation**, deferring carry propagation to the last stage.
 * The **MBE–CSA pair** represents a high-performance datapath style well-suited for MAC-intensive workloads.
 
-Future pairs will explore alternative multipliers (array, Wallace, Dadda) and adders (carry-lookahead, Kogge-Stone, etc.) to compare design trade-offs in VLSI contexts
+Future pairs will explore alternative multipliers (array, Wallace, Dadda) and adders (carry-lookahead, Kogge-Stone, etc.) to compare design trade-offs in VLSI contexts.
