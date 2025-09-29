@@ -158,3 +158,113 @@ $$
 * **Kogge–Stone achieves low addition delay** via parallel prefix logic.
 * The **Booth–Kogge pair** balances multiplier efficiency with one of the fastest known adder structures, making it well-suited for **timing-critical datapaths**.
 
+---
+
+Here’s the **math-heavy extension block** you can add for the **Baugh–Wooley Multiplier + Ripple-Carry Adder** pair (structured like the earlier ones but with more LaTeX detail):
+
+---
+
+#### Baugh–Wooley – Ripple-Carry
+
+The third datapath variant combines a **Baugh–Wooley signed multiplier** with a **Ripple-Carry Adder (RCA)**.
+This pair emphasizes simplicity and clarity of two’s complement arithmetic, providing a canonical baseline for comparison against more advanced structures.
+
+---
+
+##### Baugh–Wooley Multiplier
+
+The **Baugh–Wooley algorithm** ensures that signed multiplication in **two’s complement** form can be performed using only **positive-weighted partial products**.
+
+For two signed numbers of width $n$:
+
+$$
+[
+A = -a_{n-1}2^{n-1} + \sum_{i=0}^{n-2} a_i 2^i
+]
+$$
+
+$$
+[
+B = -b_{n-1}2^{n-1} + \sum_{j=0}^{n-2} b_j 2^j
+]
+$$
+
+The product is:
+
+$$
+[
+P = A \cdot B
+= \Big( -a_{n-1}2^{n-1} + \sum_{i=0}^{n-2} a_i 2^i \Big)
+\Big( -b_{n-1}2^{n-1} + \sum_{j=0}^{n-2} b_j 2^j \Big)
+]
+$$
+
+Expanding yields four groups of terms:
+
+1. **Positive partial products** ($a_i b_j 2^{i+j}$).
+2. **Negative correction terms** involving the MSBs ($-a_{n-1} b_j 2^{n-1+j}$ and $-b_{n-1} a_i 2^{n-1+i}$).
+3. **Double-negation MSB term** ($a_{n-1} b_{n-1} 2^{2n-2}$).
+
+The Baugh–Wooley technique *rearranges* the negative terms into a positive-weighted structure by complementing and adding correction bits, allowing the hardware to be realized with a uniform partial-product matrix.
+
+Thus, the hardware can generate all $n^2$ partial products as if operands were unsigned, with small **bit inversions and constant additions** correcting the two’s complement behavior.
+
+**Yosys Netlist (Baugh–Wooley Multiplier):**
+![Baugh–Wooley Multiplier Netlist](./baugh-rca-b/baugh/baugh_unit.png)
+*Signed multiplication in two’s complement via positive partial-product rearrangement.*
+
+---
+
+##### Ripple-Carry Adder (RCA)
+
+The RCA is the simplest form of binary adder. For two $n$-bit operands $A = (A_{n-1},\dots,A_0)$ and $B = (B_{n-1},\dots,B_0)$, each bit position computes:
+
+$$
+[
+\begin{aligned}
+S_i &= A_i \oplus B_i \oplus C_i \
+C_{i+1} &= (A_i B_i) + (B_i C_i) + (C_i A_i)
+\end{aligned}
+]
+$$
+
+with initial carry $C_0 = 0$.
+
+The total delay is proportional to $O(n)$, since each carry must ripple sequentially through all stages.
+While slow compared to logarithmic adders, the RCA has minimal area and wiring complexity.
+
+**Yosys Netlist (Ripple-Carry Adder):**
+![Ripple-Carry Adder Netlist](./baugh-rca-b/rca/rca_unit.png)
+*Bitwise full-adder chain propagating carry serially from LSB to MSB.*
+
+---
+
+##### MAC Unit Composition
+
+The MAC datapath integrates the Baugh–Wooley multiplier with the ripple-carry adder:
+
+1. **Baugh–Wooley Multiplier** computes a signed product $P = A \times B$ using a correction-free partial product array.
+2. **Ripple-Carry Adder** accumulates the product with the current running sum:
+
+$$
+[
+\text{Acc}*{out} = \text{Acc}*{in} + (A \times B)
+]
+$$
+
+3. **Accumulator Register** stores the updated result synchronously.
+
+**Yosys Netlist (MAC):**
+![MAC Netlist](./baugh-rca-b/mac/mac_unit.png)
+*Multiply-Accumulate datapath using Baugh–Wooley multiplier and ripple-carry adder.*
+
+---
+
+##### Observations
+
+* **Baugh–Wooley ensures correctness** of two’s complement multiplication with uniform hardware structure.
+* **Ripple-Carry Adder has $O(n)$ delay**, making it the simplest but slowest accumulation method.
+* The **Baugh–Wooley – RCA pair** represents a **baseline reference design**: easy to implement and area-efficient, but limited in performance.
+
+---
+
