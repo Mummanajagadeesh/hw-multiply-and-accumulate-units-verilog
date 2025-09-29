@@ -1,5 +1,7 @@
 # Hardware MAC Units (Verilog)
 
+![mac-arch-diag](mac.png)
+
 This repository contains hardware implementations of **Multiply-Accumulate (MAC) units** and their building blocks, written in **synthesizable Verilog**.
 The objective is to study and compare different **adder and multiplier architectures** in the context of datapath design for VLSI systems.
 
