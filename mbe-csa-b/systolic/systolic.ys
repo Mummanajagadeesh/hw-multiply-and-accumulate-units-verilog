@@ -1,0 +1,21 @@
+# Load standard cell library
+# read_liberty -lib /home/jagadeesh97/OsystolicnROAD-flow-scripts/flow/platforms/sky130hs/lib/sky130_fd_sc_hs__tt_025C_1v80.lib
+
+# Read RTL Verilog
+read_verilog systolic.v pe.v mac.v csa.v mbe.v 
+
+# Synthesize top module
+synth -top systolic 
+
+# Prepare top module without flattening
+prep -top systolic
+
+# Map D flip-flops
+# dfflibmap -liberty /home/jagadeesh97/OsystolicnROAD-flow-scripts/flow/platforms/sky130hs/lib/sky130_fd_sc_hs__tt_025C_1v80.lib
+
+# Then: map those gates into Sky130 cells (maj can’t reapsystolicar)
+# abc -liberty /home/jagadeesh97/OsystolicnROAD-flow-scripts/flow/platforms/sky130hs/lib/sky130_fd_sc_hs__tt_025C_1v80.lib
+
+# Output mapsystolicd netlist
+write_verilog systolic_unit.v
+write_json systolic_unit.json
