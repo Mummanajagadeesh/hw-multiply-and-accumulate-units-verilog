@@ -1,0 +1,21 @@
+# Load standard cell library
+read_liberty -lib /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lib/sky130_fd_sc_hs__tt_025C_1v80.lib
+
+# Read RTL Verilog
+read_verilog booth.v
+
+# Synthesize top module
+synth -top booth 
+
+# Prepare top module without flattening
+prep -top booth
+
+# Map D flip-flops
+# dfflibmap -liberty /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lib/sky130_fd_sc_hs__tt_025C_1v80.lib
+
+# Then: map those gates into Sky130 cells (maj can’t reappear)
+# abc -liberty /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lib/sky130_fd_sc_hs__tt_025C_1v80.lib
+
+# Output mapped netlist
+write_verilog booth_unit.v
+write_json booth_unit.json
