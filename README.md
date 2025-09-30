@@ -1,6 +1,13 @@
 # Hardware MAC Units (Verilog)
 
-![mac-arch-diag](mac.png)
+<p align="center">
+  <img src="mac.png" alt="MAC architecture" width="400"/>
+  <br/>
+  <em>Neural computing unit structure for calculating N×N matrix multiplication: <br>
+  (a) Systolic-array neural computing unit; <br>(b) Conventional MAC architecture.<br>
+  Source: <a href="https://www.mdpi.com/2079-9292/9/2/338">MDPI Electronics</a>.</em>
+</p>
+
 
 This repository contains hardware implementations of **Multiply-Accumulate (MAC) units** and their building blocks, written in **synthesizable Verilog**.
 The objective is to study and compare different **adder and multiplier architectures** in the context of datapath design for VLSI systems.
@@ -11,26 +18,27 @@ All designs were evaluated under identical synthesis and layout constraints usin
 
 #### Detailed Comparison
 
-| Metric | CSA | Kogge-Stone | RCA |
+| Metric | CSA | Kogge–Stone | RCA |
 |:--|--:|--:|--:|
-| **core_area_µm²** | 2.522419e+03 | 3.688538e+03 | 1.126080e+03 |
-| **die_area_µm²** | 4.604115e+03 | 6.092768e+03 | 2.571760e+03 |
-| **utilization_%** | 5.478619e+01 | 6.053960e+01 | 4.378635e+01 |
-| **flops** | 0.000000e+00 | 0.000000e+00 | 0.000000e+00 |
-| **total_cells** | 6.400000e+01 | 1.100000e+02 | 3.400000e+01 |
-| **comb_cells** | 6.400000e+01 | 1.100000e+02 | 3.400000e+01 |
-| **clock_period_ns** | 1.000000e+01 | 1.000000e+01 | 1.000000e+01 |
-| **WNS_ns** | 0.000000e+00 | 0.000000e+00 | 0.000000e+00 |
-| **TNS_ns** | 0.000000e+00 | 0.000000e+00 | 0.000000e+00 |
-| **critical_path_ns** | 5.070000e+00 | 6.210000e+00 | 7.140000e+00 |
-| **Fmax_MHz** | 1.972387e+02 | 1.610306e+02 | 1.400560e+02 |
-| **total_power_mW** | 8.340000e-02 | 9.570000e-02 | 3.260000e-02 |
-| **energy_per_cycle_pJ** | 8.340000e-01 | 9.570000e-01 | 3.260000e-01 |
-| **latency_ns** | 5.070000e+00 | 6.210000e+00 | 7.140000e+00 |
-| **throughput_ops_per_sec** | 1.972387e+08 | 1.610306e+08 | 1.400560e+08 |
-| **energy_per_op_pJ** | 4.228380e+02 | 5.942970e+02 | 2.327640e+02 |
-| **power_efficiency_ops_per_sec_per_mW** | 2.364972e+09 | 1.682660e+09 | 4.296197e+09 |
-| **area_efficiency_ops_per_sec_per_µm²** | 4.283965e+04 | 2.642979e+04 | 5.445920e+04 |
+| **Core Area (µm²)** | 2,522 | 3,689 | 1,126 |
+| **Die Area (µm²)** | 4,604 | 6,093 | 2,572 |
+| **Utilization (%)** | 54.79 | 60.54 | 43.79 |
+| **Flip-Flops** | 0 | 0 | 0 |
+| **Total Cells** | 64 | 110 | 34 |
+| **Combinational Cells** | 64 | 110 | 34 |
+| **Clock Period (ns)** | 10.00 | 10.00 | 10.00 |
+| **WNS (ns)** | 0.00 | 0.00 | 0.00 |
+| **TNS (ns)** | 0.00 | 0.00 | 0.00 |
+| **Critical Path (ns)** | 5.07 | 6.21 | 7.14 |
+| **Fmax (MHz)** | 197.24 | 161.03 | 140.06 |
+| **Total Power (mW)** | 0.0834 | 0.0957 | 0.0326 |
+| **Energy per Cycle (pJ)** | 0.834 | 0.957 | 0.326 |
+| **Latency (ns)** | 5.07 | 6.21 | 7.14 |
+| **Throughput (ops/s)** | 197,238,700 | 161,030,600 | 140,056,000 |
+| **Energy per Operation (pJ)** | 422.84 | 594.30 | 232.76 |
+| **Power Efficiency (ops/s per mW)** | 2,364,972,000 | 1,682,660,000 | 4,296,197,000 |
+| **Area Efficiency (ops/s per µm²)** | 42,839.65 | 26,429.79 | 54,459.20 |
+
 
 #### GDS Visualizations
 | CSA | Kogge-Stone | RCA |
@@ -61,24 +69,24 @@ All designs were evaluated under identical synthesis and layout constraints usin
 
 | Metric | MBE | Booth | Baugh–Wooley |
 |:--|--:|--:|--:|
-| **core_area_µm²** | 9.594202e+03 | 1.436878e+04 | 1.191142e+04 |
-| **die_area_µm²** | 1.309412e+04 | 1.868688e+04 | 1.582712e+04 |
-| **utilization_%** | 7.327108e+01 | 7.689235e+01 | 7.525959e+01 |
-| **flops** | 0.000000e+00 | 0.000000e+00 | 0.000000e+00 |
-| **total_cells** | 2.940000e+02 | 4.700000e+02 | 3.740000e+02 |
-| **comb_cells** | 2.940000e+02 | 4.700000e+02 | 3.740000e+02 |
-| **clock_period_ns** | 1.000000e+01 | 1.000000e+01 | 1.000000e+01 |
-| **WNS_ns** | 0.000000e+00 | -2.500000e+00 | 0.000000e+00 |
-| **TNS_ns** | 0.000000e+00 | -1.579000e+01 | 0.000000e+00 |
-| **critical_path_ns** | 8.840000e+00 | 1.250000e+01 | 8.630000e+00 |
-| **Fmax_MHz** | 1.131222e+02 | 8.000000e+01 | 1.158749e+02 |
-| **total_power_mW** | 3.790000e-01 | 7.010000e-01 | 4.480000e-01 |
-| **energy_per_cycle_pJ** | 3.790000e+00 | 7.010000e+00 | 4.480000e+00 |
-| **latency_ns** | 8.840000e+00 | 1.250000e+01 | 8.630000e+00 |
-| **throughput_ops_per_sec** | 1.131222e+08 | 8.000000e+07 | 1.158749e+08 |
-| **energy_per_op_pJ** | 3.350360e+03 | 8.762500e+03 | 3.866240e+03 |
-| **power_efficiency_ops_per_sec_per_mW** | 2.984754e+08 | 1.141227e+08 | 2.586492e+08 |
-| **area_efficiency_ops_per_sec_per_µm²** | 8.639159e+03 | 4.281079e+03 | 7.321286e+03 |
+| **Core Area (µm²)** | 9,594 | 14,369 | 11,911 |
+| **Die Area (µm²)** | 13,094 | 18,687 | 15,827 |
+| **Utilization (%)** | 73.27 | 76.89 | 75.26 |
+| **Flip-Flops** | 0 | 0 | 0 |
+| **Total Cells** | 294 | 470 | 374 |
+| **Combinational Cells** | 294 | 470 | 374 |
+| **Clock Period (ns)** | 10.00 | 10.00 | 10.00 |
+| **WNS (ns)** | 0.00 | -2.50 | 0.00 |
+| **TNS (ns)** | 0.00 | -15.79 | 0.00 |
+| **Critical Path (ns)** | 8.84 | 12.50 | 8.63 |
+| **Fmax (MHz)** | 113.12 | 80.00 | 115.87 |
+| **Total Power (mW)** | 0.379 | 0.701 | 0.448 |
+| **Energy per Cycle (pJ)** | 3.79 | 7.01 | 4.48 |
+| **Latency (ns)** | 8.84 | 12.50 | 8.63 |
+| **Throughput (ops/s)** | 113,122,200 | 80,000,000 | 115,874,900 |
+| **Energy per Operation (pJ)** | 3,350.36 | 8,762.50 | 3,866.24 |
+| **Power Efficiency (ops/s per mW)** | 298,475,400 | 114,122,700 | 258,649,200 |
+| **Area Efficiency (ops/s per µm²)** | 8,639.16 | 4,281.08 | 7,321.29 |
 
 #### GDS Visualizations
 | MBE | Booth | Baugh–Wooley |
