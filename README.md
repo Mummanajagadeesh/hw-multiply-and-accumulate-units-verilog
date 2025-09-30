@@ -35,12 +35,12 @@ All designs were evaluated under identical synthesis and layout constraints usin
 #### GDS Visualizations
 | CSA | Kogge-Stone | RCA |
 |:--:|:--:|:--:|
-| <img src="adders/svgs/csa.svg" width="33%"/> | <img src="adders/svgs/kogge.svg" width="33%"/> | <img src="adders/svgs/rca.svg" width="33%"/> |
+| <img src="adders/svgs/csa.svg" width="250"/> | <img src="adders/svgs/kogge.svg" width="250"/> | <img src="adders/svgs/rca.svg" width="250"/> |
 
 #### OpenROAD Layouts
 | CSA | Kogge-Stone | RCA |
 |:--:|:--:|:--:|
-| <img src="adders/csa/image.png" width="33%"/> | <img src="adders/kogge/image.png" width="33%"/> | <img src="adders/rca/image.png" width="33%"/> |
+| <img src="adders/csa/image.png" width="250"/> | <img src="adders/kogge/image.png" width="250"/> | <img src="adders/rca/image.png" width="250"/> |
 
 #### Key Observations
 
@@ -83,12 +83,12 @@ All designs were evaluated under identical synthesis and layout constraints usin
 #### GDS Visualizations
 | MBE | Booth | Baugh–Wooley |
 |:--:|:--:|:--:|
-| <img src="multipliers/svgs/mbe.svg" width="33%"/> | <img src="multipliers/svgs/booth.svg" width="33%"/> | <img src="multipliers/svgs/baugh.svg" width="33%"/> |
+| <img src="multipliers/svgs/mbe.svg" width="250"/> | <img src="multipliers/svgs/booth.svg" width="250"/> | <img src="multipliers/svgs/baugh.svg" width="250"/> |
 
 #### OpenROAD Layouts
 | MBE | Booth | Baugh–Wooley |
 |:--:|:--:|:--:|
-| <img src="multipliers/mbe/image.png" width="33%"/> | <img src="multipliers/booth/image.png" width="33%"/> | <img src="multipliers/baugh/image.png" width="33%"/> |
+| <img src="multipliers/mbe/image.png" width="250"/> | <img src="multipliers/booth/image.png" width="250"/> | <img src="multipliers/baugh/image.png" width="250"/> |
 
 #### Key Observations
 
