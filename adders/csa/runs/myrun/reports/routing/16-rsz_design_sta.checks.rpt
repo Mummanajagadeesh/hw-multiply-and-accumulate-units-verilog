@@ -1,0 +1,270 @@
+
+===========================================================================
+report_checks -unconstrained
+===========================================================================
+======================= Typical Corner ===================================
+
+Startpoint: B[12] (input port clocked by clk)
+Endpoint: Sum[12] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          2.00    2.00 v input external delay
+                  0.02    0.01    2.01 v B[12] (in)
+     1    0.01                           B[12] (net)
+                  0.02    0.00    2.01 v input20/A (sky130_fd_sc_hd__dlymetal6s2s_1)
+                  0.09    0.18    2.19 v input20/X (sky130_fd_sc_hd__dlymetal6s2s_1)
+     3    0.02                           net20 (net)
+                  0.09    0.00    2.19 v _56_/A (sky130_fd_sc_hd__xnor2_1)
+                  0.18    0.23    2.42 ^ _56_/Y (sky130_fd_sc_hd__xnor2_1)
+     1    0.01                           _02_ (net)
+                  0.18    0.00    2.42 ^ _57_/B (sky130_fd_sc_hd__xnor2_1)
+                  0.11    0.14    2.56 ^ _57_/Y (sky130_fd_sc_hd__xnor2_1)
+     1    0.00                           net68 (net)
+                  0.11    0.00    2.56 ^ output68/A (sky130_fd_sc_hd__clkbuf_4)
+                  0.11    0.22    2.78 ^ output68/X (sky130_fd_sc_hd__clkbuf_4)
+     1    0.03                           Sum[12] (net)
+                  0.11    0.00    2.78 ^ Sum[12] (out)
+                                  2.78   data arrival time
+
+                  0.00   10.00   10.00   clock clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                         -0.25    9.75   clock uncertainty
+                          0.00    9.75   clock reconvergence pessimism
+                         -2.00    7.75   output external delay
+                                  7.75   data required time
+-----------------------------------------------------------------------------
+                                  7.75   data required time
+                                 -2.78   data arrival time
+-----------------------------------------------------------------------------
+                                  4.97   slack (MET)
+
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+======================= Typical Corner ===================================
+
+No paths found.
+
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+======================= Typical Corner ===================================
+
+
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 192 unannotated drivers.
+ A[0]
+ A[10]
+ A[11]
+ A[12]
+ A[13]
+ A[14]
+ A[15]
+ A[1]
+ A[2]
+ A[3]
+ A[4]
+ A[5]
+ A[6]
+ A[7]
+ A[8]
+ A[9]
+ B[0]
+ B[10]
+ B[11]
+ B[12]
+ B[13]
+ B[14]
+ B[15]
+ B[1]
+ B[2]
+ B[3]
+ B[4]
+ B[5]
+ B[6]
+ B[7]
+ B[8]
+ B[9]
+ C[0]
+ C[10]
+ C[11]
+ C[12]
+ C[13]
+ C[14]
+ C[15]
+ C[1]
+ C[2]
+ C[3]
+ C[4]
+ C[5]
+ C[6]
+ C[7]
+ C[8]
+ C[9]
+ _32_/Y
+ _33_/Y
+ _34_/Y
+ _35_/Y
+ _36_/Y
+ _37_/Y
+ _38_/Y
+ _39_/Y
+ _40_/Y
+ _41_/Y
+ _42_/Y
+ _43_/Y
+ _44_/Y
+ _45_/Y
+ _46_/Y
+ _47_/Y
+ _48_/Y
+ _49_/Y
+ _50_/Y
+ _51_/Y
+ _52_/Y
+ _53_/Y
+ _54_/Y
+ _55_/Y
+ _56_/Y
+ _57_/Y
+ _58_/Y
+ _59_/Y
+ _60_/Y
+ _61_/Y
+ _62_/Y
+ _63_/Y
+ _64_/X
+ _65_/X
+ _66_/X
+ _67_/X
+ _68_/X
+ _69_/X
+ _70_/X
+ _71_/X
+ _72_/X
+ _73_/X
+ _74_/X
+ _75_/X
+ _76_/X
+ _77_/X
+ _78_/X
+ _79_/X
+ _80_/X
+ _81_/X
+ _82_/X
+ _83_/X
+ _84_/X
+ _85_/X
+ _86_/X
+ _87_/X
+ _88_/X
+ _89_/X
+ _90_/X
+ _91_/X
+ _92_/X
+ _93_/X
+ _94_/X
+ _95_/X
+ input1/X
+ input10/X
+ input11/X
+ input12/X
+ input13/X
+ input14/X
+ input15/X
+ input16/X
+ input17/X
+ input18/X
+ input19/X
+ input2/X
+ input20/X
+ input21/X
+ input22/X
+ input23/X
+ input24/X
+ input25/X
+ input26/X
+ input27/X
+ input28/X
+ input29/X
+ input3/X
+ input30/X
+ input31/X
+ input32/X
+ input33/X
+ input34/X
+ input35/X
+ input36/X
+ input37/X
+ input38/X
+ input39/X
+ input4/X
+ input40/X
+ input41/X
+ input42/X
+ input43/X
+ input44/X
+ input45/X
+ input46/X
+ input47/X
+ input48/X
+ input5/X
+ input6/X
+ input7/X
+ input8/X
+ input9/X
+ output49/X
+ output50/X
+ output51/X
+ output52/X
+ output53/X
+ output54/X
+ output55/X
+ output56/X
+ output57/X
+ output58/X
+ output59/X
+ output60/X
+ output61/X
+ output62/X
+ output63/X
+ output64/X
+ output65/X
+ output66/X
+ output67/X
+ output68/X
+ output69/X
+ output70/X
+ output71/X
+ output72/X
+ output73/X
+ output74/X
+ output75/X
+ output76/X
+ output77/X
+ output78/X
+ output79/X
+ output80/X
+Found 0 partially unannotated drivers.
+
+===========================================================================
+max slew violation count 0
+max fanout violation count 0
+max cap violation count 0
+============================================================================
+
+===========================================================================
+check_setup -verbose -unconstrained_endpoints -multiple_clock -no_clock -no_input_delay -loops -generated_clocks
+===========================================================================

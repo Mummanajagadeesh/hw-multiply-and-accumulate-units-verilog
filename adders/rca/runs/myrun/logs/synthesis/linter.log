@@ -1,0 +1,14 @@
+%Warning-UNUSEDSIGNAL: /openlane/designs/rca/src/rca.v:6:20: Bits of signal are not used: 'C'[8]
+                                                           : ... In instance rca
+    6 |     wire [WIDTH:0] C;
+      |                    ^
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.009
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNOPTFLAT: /openlane/designs/rca/src/rca.v:6:20: Signal unoptimizable: Circular combinational logic: 'rca.C'
+    6 |     wire [WIDTH:0] C;
+      |                    ^
+                    /openlane/designs/rca/src/rca.v:6:20:      Example path: rca.C
+                    /openlane/designs/rca/src/rca.v:12:37:      Example path: ASSIGNW
+                    /openlane/designs/rca/src/rca.v:12:27:      Example path: rca.__Vconcswap_1_h4f23fd7c__0
+                    /openlane/designs/rca/src/rca.v:7:19:      Example path: ASSIGNW
+                    /openlane/designs/rca/src/rca.v:6:20:      Example path: rca.C
