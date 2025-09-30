@@ -5,7 +5,136 @@
 This repository contains hardware implementations of **Multiply-Accumulate (MAC) units** and their building blocks, written in **synthesizable Verilog**.
 The objective is to study and compare different **adder and multiplier architectures** in the context of datapath design for VLSI systems.
 
-Each variant combines a **multiplier** with an **adder/accumulator strategy**, exploring design trade-offs in delay, area, and power. Additional pairs will be added over time.
+All designs were evaluated under identical synthesis and layout constraints using a consistent standard-cell library and timing target
+
+### 8-bit Signed ADDERS
+
+#### Detailed Comparison
+
+| Metric | CSA | Kogge-Stone | RCA |
+|:--|--:|--:|--:|
+| **core_area_µm²** | 2.522419e+03 | 3.688538e+03 | 1.126080e+03 |
+| **die_area_µm²** | 4.604115e+03 | 6.092768e+03 | 2.571760e+03 |
+| **utilization_%** | 5.478619e+01 | 6.053960e+01 | 4.378635e+01 |
+| **flops** | 0.000000e+00 | 0.000000e+00 | 0.000000e+00 |
+| **total_cells** | 6.400000e+01 | 1.100000e+02 | 3.400000e+01 |
+| **comb_cells** | 6.400000e+01 | 1.100000e+02 | 3.400000e+01 |
+| **clock_period_ns** | 1.000000e+01 | 1.000000e+01 | 1.000000e+01 |
+| **WNS_ns** | 0.000000e+00 | 0.000000e+00 | 0.000000e+00 |
+| **TNS_ns** | 0.000000e+00 | 0.000000e+00 | 0.000000e+00 |
+| **critical_path_ns** | 5.070000e+00 | 6.210000e+00 | 7.140000e+00 |
+| **Fmax_MHz** | 1.972387e+02 | 1.610306e+02 | 1.400560e+02 |
+| **total_power_mW** | 8.340000e-02 | 9.570000e-02 | 3.260000e-02 |
+| **energy_per_cycle_pJ** | 8.340000e-01 | 9.570000e-01 | 3.260000e-01 |
+| **latency_ns** | 5.070000e+00 | 6.210000e+00 | 7.140000e+00 |
+| **throughput_ops_per_sec** | 1.972387e+08 | 1.610306e+08 | 1.400560e+08 |
+| **energy_per_op_pJ** | 4.228380e+02 | 5.942970e+02 | 2.327640e+02 |
+| **power_efficiency_ops_per_sec_per_mW** | 2.364972e+09 | 1.682660e+09 | 4.296197e+09 |
+| **area_efficiency_ops_per_sec_per_µm²** | 4.283965e+04 | 2.642979e+04 | 5.445920e+04 |
+
+#### GDS Visualizations
+| CSA | Kogge-Stone | RCA |
+|:--:|:--:|:--:|
+| <img src="adders/svgs/csa.svg" width="33%"/> | <img src="adders/svgs/kogge.svg" width="33%"/> | <img src="adders/svgs/rca.svg" width="33%"/> |
+
+#### OpenROAD Layouts
+| CSA | Kogge-Stone | RCA |
+|:--:|:--:|:--:|
+| <img src="adders/csa/image.png" width="33%"/> | <img src="adders/kogge/image.png" width="33%"/> | <img src="adders/rca/image.png" width="33%"/> |
+
+#### Key Observations
+
+- **Critical Path and Speed:**  
+  The CSA achieved the shortest delay (5.07 ns) and highest Fmax (197 MHz). Kogge-Stone followed at 161 MHz, while RCA remained the slowest at 140 MHz. The CSA’s simpler interconnect structure provided an advantage over Kogge-Stone, which suffered from wire-driven delay in its prefix tree.
+- **Area and Power:**  
+  RCA recorded the smallest core area (1.13×10³ µm²) and lowest power (0.0326 mW). Kogge-Stone consumed the most power and area due to its dense interconnect and logic depth.
+- **Efficiency:**  
+  RCA led in both power and area efficiency, while CSA balanced performance and resource usage effectively.
+- **Deviation from Expected:**  
+  Theoretically, Kogge-Stone should outperform CSA in delay, but practical parasitics and fanout effects favored CSA in this implementation. Otherwise, results align closely with architectural expectations.
+
+---
+
+### 8-bit Signed MULTIPLIERS
+
+#### Detailed Comparison
+
+| Metric | MBE | Booth | Baugh–Wooley |
+|:--|--:|--:|--:|
+| **core_area_µm²** | 9.594202e+03 | 1.436878e+04 | 1.191142e+04 |
+| **die_area_µm²** | 1.309412e+04 | 1.868688e+04 | 1.582712e+04 |
+| **utilization_%** | 7.327108e+01 | 7.689235e+01 | 7.525959e+01 |
+| **flops** | 0.000000e+00 | 0.000000e+00 | 0.000000e+00 |
+| **total_cells** | 2.940000e+02 | 4.700000e+02 | 3.740000e+02 |
+| **comb_cells** | 2.940000e+02 | 4.700000e+02 | 3.740000e+02 |
+| **clock_period_ns** | 1.000000e+01 | 1.000000e+01 | 1.000000e+01 |
+| **WNS_ns** | 0.000000e+00 | -2.500000e+00 | 0.000000e+00 |
+| **TNS_ns** | 0.000000e+00 | -1.579000e+01 | 0.000000e+00 |
+| **critical_path_ns** | 8.840000e+00 | 1.250000e+01 | 8.630000e+00 |
+| **Fmax_MHz** | 1.131222e+02 | 8.000000e+01 | 1.158749e+02 |
+| **total_power_mW** | 3.790000e-01 | 7.010000e-01 | 4.480000e-01 |
+| **energy_per_cycle_pJ** | 3.790000e+00 | 7.010000e+00 | 4.480000e+00 |
+| **latency_ns** | 8.840000e+00 | 1.250000e+01 | 8.630000e+00 |
+| **throughput_ops_per_sec** | 1.131222e+08 | 8.000000e+07 | 1.158749e+08 |
+| **energy_per_op_pJ** | 3.350360e+03 | 8.762500e+03 | 3.866240e+03 |
+| **power_efficiency_ops_per_sec_per_mW** | 2.984754e+08 | 1.141227e+08 | 2.586492e+08 |
+| **area_efficiency_ops_per_sec_per_µm²** | 8.639159e+03 | 4.281079e+03 | 7.321286e+03 |
+
+#### GDS Visualizations
+| MBE | Booth | Baugh–Wooley |
+|:--:|:--:|:--:|
+| <img src="multipliers/svgs/mbe.svg" width="33%"/> | <img src="multipliers/svgs/booth.svg" width="33%"/> | <img src="multipliers/svgs/baugh.svg" width="33%"/> |
+
+#### OpenROAD Layouts
+| MBE | Booth | Baugh–Wooley |
+|:--:|:--:|:--:|
+| <img src="multipliers/mbe/image.png" width="33%"/> | <img src="multipliers/booth/image.png" width="33%"/> | <img src="multipliers/baugh/image.png" width="33%"/> |
+
+#### Key Observations
+
+- **Timing and Speed:**  
+  The Baugh–Wooley multiplier achieved the shortest delay (8.63 ns) and highest Fmax (115.9 MHz), followed closely by the MBE at 8.84 ns and 113.1 MHz. Booth (Radix-2) lagged significantly with a 12.5 ns path and 80 MHz Fmax.
+- **Power and Area:**  
+  MBE consumed 0.379 mW, Baugh–Wooley 0.448 mW, and Booth 0.701 mW. The Booth architecture’s high switching activity and additional partial product handling resulted in elevated power and area.
+- **Utilization and Cell Count:**  
+  Booth required the highest number of cells (470) and utilization (76.9 %), while MBE achieved the lowest in both categories.
+- **Efficiency Metrics:**  
+  MBE provided the best energy per operation (3.35×10³ pJ), power efficiency (2.98×10⁸ ops/s/mW), and area efficiency (8.64×10³ ops/s/µm²).
+- **Deviations from Theoretical Expectation:**  
+  MBE was expected to be the most area-intensive design, but synthesis results show it as the most compact. This inversion likely stems from logic sharing and optimized radix-4 encoding realized by the synthesis tool, reducing redundant partial products.  
+  Baugh–Wooley’s regular array contributed to tight routing and high timing closure, slightly outperforming MBE in delay.
+
+---
+
+### Summary
+
+| Category | Adders Best | Multipliers Best |
+|:--|:--:|:--:|
+| **Speed / Fmax** | CSA | Baugh–Wooley / MBE |
+| **Power** | RCA | MBE |
+| **Area** | RCA | MBE |
+| **Overall Efficiency** | RCA (compact, efficient) | MBE (most balanced) |
+
+---
+
+### Discussion
+
+The comparative results demonstrate how theoretical speed advantages can be offset by routing and interconnect parasitics in post-synthesis environments.  
+For the adders, the prefix-based Kogge-Stone suffered from wiring overhead, allowing the simpler CSA to achieve a shorter critical path.  
+For the multipliers, the Modified Booth architecture benefited from aggressive optimization and logic folding, resulting in both reduced area and improved efficiency, while Baugh–Wooley’s structured datapath yielded strong timing closure.  
+Booth’s traditional Radix-2 implementation consistently trailed across all parameters, reinforcing its inefficiency for modern arithmetic datapaths under similar constraints.
+
+
+
+
+
+
+---
+
+
+## MAC PAIRS
+
+Each variant combines a **multiplier** with an **adder/accumulator strategy**, exploring design trade-offs in delay, area, and power. Additional pairs will be added over time
 
 ---
 

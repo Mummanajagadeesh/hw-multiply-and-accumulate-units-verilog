@@ -3,9 +3,9 @@ import os
 
 # Define the adders and paths
 adders = {
-    "CSA": "csa/runs/myrun/ppa_summary.csv",
-    "Kogge": "kogge/runs/myrun/ppa_summary.csv",
-    "RCA": "rca/runs/myrun/ppa_summary.csv"
+    "CSA": "csa/ppa_summary.csv",
+    "Kogge": "kogge/ppa_summary.csv",
+    "RCA": "rca/ppa_summary.csv"
 }
 
 dataframes = {}

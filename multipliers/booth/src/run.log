@@ -1,0 +1,184 @@
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-'
+libGL error: unable to load driver: swrast_dri.so
+libGL error: failed to load driver: swrast
+OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+>>> Reading design and technology files...
+[INFO ODB-0222] Reading LEF file: /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lef/sky130_fd_sc_hs.tlef
+[INFO ODB-0223]     Created 11 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0226] Finished LEF file:  /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lef/sky130_fd_sc_hs.tlef
+read_lef /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lef/sky130_fd_sc_hs.tlef succeeded.
+[INFO ODB-0222] Reading LEF file: /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lef/sky130_fd_sc_hs_merged.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2007): NAMESCASESENSITIVE statement is obsolete in version 5.6 and later.
+The LEF parser will ignore this statement.
+To avoid this warning in the future, remove this statement from the LEF file with version 5.6 or later. See file /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lef/sky130_fd_sc_hs_merged.lef at line 18.
+
+[INFO ODB-0225]     Created 390 library cells
+[INFO ODB-0226] Finished LEF file:  /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lef/sky130_fd_sc_hs_merged.lef
+read_lef /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lef/sky130_fd_sc_hs_merged.lef succeeded.
+read_liberty succeeded.
+read_verilog succeeded.
+link_design succeeded.
+total_cell_area = 14368.7808
+core_area = 14368.7808
+die_area = 18686.878425
+Core size (pre-snap): 119.86984942011064x119.86984942011064 µm
+Die  size: 136.6999576627586x136.6999576627586 µm
+DBU per µm: 1000
+Using site step (DBU): width=480 height=3330
+Snapped core box (µm): ll=8.16 6.66 ur=128.02984942011065 126.52984942011064 => 119.870x119.870 µm
+>>> Initializing floorplan...
+[INFO IFP-0001] Added 35 rows of 249 site unit with height 1.
+initialize_floorplan completed.
+>>> Loading routing tracks script (if present)...
+Sourced make_tracks.tcl
+>>> Detecting routing layers and validating tracks...
+Layer candidate: met1  preferred_dir=HORIZONTAL  tracks-check=-1
+Layer candidate: met2  preferred_dir=VERTICAL  tracks-check=-1
+Layer candidate: met3  preferred_dir=HORIZONTAL  tracks-check=-1
+Layer candidate: metal1  preferred_dir=HORIZONTAL  tracks-check=-1
+Layer candidate: metal2  preferred_dir=VERTICAL  tracks-check=-1
+Layer candidate: M1  preferred_dir=  tracks-check=-1
+Layer candidate: M2  preferred_dir=  tracks-check=-1
+Selected horizontal layer: met1
+Selected vertical   layer: met2
+>>> Preparing placement...
+>>> Marking power/ground nets as special...
+[WARNING STA-0333] net 'vdd' not found.
+Warning: net 'vdd' not found.
+[WARNING STA-0333] net 'VDD' not found.
+Warning: net 'VDD' not found.
+[WARNING STA-0333] net 'vss' not found.
+Warning: net 'vss' not found.
+[WARNING STA-0333] net 'VSS' not found.
+Warning: net 'VSS' not found.
+Marked net 'zero_' as special.
+>>> Performing place_pins...
+Found 0 macro blocks.
+Using 1u default distance from corners.
+Using 2 tracks default min distance between IO pins.
+[INFO PPL-0010] Tentative 0 to set up sections.
+[INFO PPL-0001] Number of slots          648
+[INFO PPL-0002] Number of I/O            32
+[INFO PPL-0003] Number of I/O w/sink     32
+[INFO PPL-0004] Number of I/O w/o sink   0
+[INFO PPL-0005] Slots per section        200
+[INFO PPL-0006] Slots increase factor    0.01
+[INFO PPL-0008] Successfully assigned pins to sections.
+[INFO PPL-0012] I/O nets HPWL: 2432.96 um.
+place_pins succeeded.
+>>> Performing global placement...
+[INFO GPL-0002] DBU: 1000
+[INFO GPL-0003] SiteSize: 480 3330
+[INFO GPL-0004] CoreAreaLxLy: 8160 6660
+[INFO GPL-0005] CoreAreaUxUy: 127680 123210
+[INFO GPL-0006] NumInstances: 424
+[INFO GPL-0007] NumPlaceInstances: 424
+[INFO GPL-0008] NumFixedInstances: 0
+[INFO GPL-0009] NumDummyInstances: 0
+[INFO GPL-0010] NumNets: 440
+[INFO GPL-0011] NumPins: 1530
+[INFO GPL-0012] DieAreaLxLy: 0 0
+[INFO GPL-0013] DieAreaUxUy: 136700 136700
+[INFO GPL-0014] CoreAreaLxLy: 8160 6660
+[INFO GPL-0015] CoreAreaUxUy: 127680 123210
+[INFO GPL-0016] CoreArea: 13930056000
+[INFO GPL-0017] NonPlaceInstsArea: 0
+[INFO GPL-0018] PlaceInstsArea: 4183012800
+[INFO GPL-0019] Util(%): 30.03
+[INFO GPL-0020] StdInstsArea: 4183012800
+[INFO GPL-0021] MacroInstsArea: 0
+[InitialPlace]  Iter: 1 CG residual: 0.00000011 HPWL: 5584880
+[InitialPlace]  Iter: 2 CG residual: 0.00000011 HPWL: 3959366
+[InitialPlace]  Iter: 3 CG residual: 0.00000007 HPWL: 3949243
+[InitialPlace]  Iter: 4 CG residual: 0.00000010 HPWL: 3970817
+[InitialPlace]  Iter: 5 CG residual: 0.00000009 HPWL: 3966722
+[INFO GPL-0031] FillerInit: NumGCells: 1188
+[INFO GPL-0032] FillerInit: NumGNets: 440
+[INFO GPL-0033] FillerInit: NumGPins: 1530
+[INFO GPL-0023] TargetDensity: 0.80
+[INFO GPL-0024] AveragePlaceInstArea: 9865596
+[INFO GPL-0025] IdealBinArea: 12331995
+[INFO GPL-0026] IdealBinCnt: 1129
+[INFO GPL-0027] TotalBinArea: 13930056000
+[INFO GPL-0028] BinCnt: 32 32
+[INFO GPL-0029] BinSize: 3735 3643
+[INFO GPL-0030] NumBins: 1024
+[NesterovSolve] Iter: 1 overflow: 0.977699 HPWL: 1277365
+[NesterovSolve] Iter: 10 overflow: 0.973011 HPWL: 1278249
+[NesterovSolve] Iter: 20 overflow: 0.972848 HPWL: 1279388
+[NesterovSolve] Iter: 30 overflow: 0.972806 HPWL: 1278022
+[NesterovSolve] Iter: 40 overflow: 0.972737 HPWL: 1277556
+[NesterovSolve] Iter: 50 overflow: 0.972695 HPWL: 1277539
+[NesterovSolve] Iter: 60 overflow: 0.972688 HPWL: 1277548
+[NesterovSolve] Iter: 70 overflow: 0.972698 HPWL: 1277590
+[NesterovSolve] Iter: 80 overflow: 0.972705 HPWL: 1277833
+[NesterovSolve] Iter: 90 overflow: 0.972707 HPWL: 1278037
+[NesterovSolve] Iter: 100 overflow: 0.972685 HPWL: 1278757
+[NesterovSolve] Iter: 110 overflow: 0.972645 HPWL: 1280248
+[NesterovSolve] Iter: 120 overflow: 0.972579 HPWL: 1284376
+[NesterovSolve] Iter: 130 overflow: 0.972483 HPWL: 1293700
+[NesterovSolve] Iter: 140 overflow: 0.972315 HPWL: 1313275
+[NesterovSolve] Iter: 150 overflow: 0.971897 HPWL: 1348669
+[NesterovSolve] Iter: 160 overflow: 0.96405 HPWL: 1412602
+[NesterovSolve] Iter: 170 overflow: 0.959963 HPWL: 1512488
+[NesterovSolve] Iter: 180 overflow: 0.949386 HPWL: 1656555
+[NesterovSolve] Iter: 190 overflow: 0.938438 HPWL: 1808162
+[NesterovSolve] Iter: 200 overflow: 0.921958 HPWL: 1979964
+[NesterovSolve] Iter: 210 overflow: 0.900088 HPWL: 2216335
+[NesterovSolve] Iter: 220 overflow: 0.873013 HPWL: 2496904
+[NesterovSolve] Iter: 230 overflow: 0.845624 HPWL: 2714180
+[NesterovSolve] Iter: 240 overflow: 0.811291 HPWL: 3036057
+[NesterovSolve] Iter: 250 overflow: 0.774744 HPWL: 3315353
+[NesterovSolve] Iter: 260 overflow: 0.738103 HPWL: 3634243
+[NesterovSolve] Iter: 270 overflow: 0.694288 HPWL: 3921903
+[NesterovSolve] Iter: 280 overflow: 0.650459 HPWL: 4207128
+[NesterovSolve] Iter: 290 overflow: 0.605218 HPWL: 4472113
+[NesterovSolve] Iter: 300 overflow: 0.552703 HPWL: 4756750
+[NesterovSolve] Iter: 310 overflow: 0.500239 HPWL: 5030126
+[NesterovSolve] Iter: 320 overflow: 0.448917 HPWL: 5224235
+[NesterovSolve] Iter: 330 overflow: 0.396575 HPWL: 5369570
+[NesterovSolve] Iter: 340 overflow: 0.348755 HPWL: 5502763
+[NesterovSolve] Iter: 350 overflow: 0.308357 HPWL: 5498218
+[NesterovSolve] Iter: 360 overflow: 0.274765 HPWL: 5582436
+[NesterovSolve] Iter: 370 overflow: 0.238887 HPWL: 5646700
+[NesterovSolve] Iter: 380 overflow: 0.219606 HPWL: 5705464
+[NesterovSolve] Iter: 390 overflow: 0.199293 HPWL: 5752207
+[NesterovSolve] Iter: 400 overflow: 0.183324 HPWL: 5799180
+[NesterovSolve] Iter: 410 overflow: 0.160989 HPWL: 5826273
+[NesterovSolve] Iter: 420 overflow: 0.142723 HPWL: 5852553
+[NesterovSolve] Iter: 430 overflow: 0.123264 HPWL: 5863358
+[NesterovSolve] Iter: 440 overflow: 0.105401 HPWL: 5894949
+[NesterovSolve] Finished with Overflow: 0.099807
+global_placement succeeded.
+>>> Performing detailed placement...
+Placement Analysis
+---------------------------------
+total displacement       1072.0 u
+average displacement        2.5 u
+max displacement           12.6 u
+original HPWL            5910.5 u
+legalized HPWL           7069.1 u
+delta HPWL                   20 %
+
+detailed_placement succeeded.
+>>> Placement step complete.
+[INFO DRT-0149] Reading tech and libs.
+
+Units:                1000
+Number of layers:     13
+Number of macros:     390
+Number of vias:       25
+Number of viarulegen: 25
+
+[INFO DRT-0150] Reading design.
+[ERROR DRT-0305] Net one_ of signal type POWER is not routable by TritonRoute. Move to special nets.
+Detailed routing reported error: DRT-0305
+If TritonRoute complains about special nets (e.g. 'Net zero_ of signal type GROUND is not routable'),
+ensure ground/power nets are connected properly in the netlist or renamed to standard VSS/VDD.
+Top-level net scan (showing nets with 'gnd'/'vss'/'vdd'/'zero' in name):
+>>> Writing DEF output...
+Done! DEF exported to /home/jagadeesh97/OpenLane/designs/booth/runs/myrun/booth.def
+>>> run.tcl finished.

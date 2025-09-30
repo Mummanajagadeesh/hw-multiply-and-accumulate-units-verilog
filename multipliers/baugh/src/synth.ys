@@ -1,0 +1,18 @@
+# Load standard cell library
+read_liberty -lib /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lib/sky130_fd_sc_hs__tt_025C_1v80.lib
+
+# Read RTL Verilog
+read_verilog baugh.v
+
+# Synthesize top module
+synth -top baugh
+
+# Map D flip-flops to library cells
+dfflibmap -liberty /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lib/sky130_fd_sc_hs__tt_025C_1v80.lib
+
+# Technology mapping & optimization
+abc -liberty /home/jagadeesh97/OpenROAD-flow-scripts/flow/platforms/sky130hs/lib/sky130_fd_sc_hs__tt_025C_1v80.lib
+
+# Output mapped Verilog & JSON netlist
+write_verilog baugh_synth.v
+write_json baugh_synth.json
