@@ -9,8 +9,7 @@
 </p>
 
 
-This repository contains hardware implementations of **Multiply-Accumulate (MAC) units** and their building blocks, written in **synthesizable Verilog**.
-The objective is to study and compare different **adder and multiplier architectures** in the context of datapath design for VLSI systems.
+This repository contains synthesizable Verilog implementations of Multiply–Accumulate (MAC) units along with their underlying arithmetic components. The implementations enable comparative analysis of different adder and multiplier architectures in terms of hardware efficiency, computational speed, latency and many more.
 
 All designs were evaluated under identical synthesis and layout constraints using a consistent standard-cell library and timing target
 
