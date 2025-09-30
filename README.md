@@ -126,10 +126,10 @@ All designs were evaluated under identical synthesis and layout constraints usin
 
 ### Discussion
 
-The comparative results demonstrate how theoretical speed advantages can be offset by routing and interconnect parasitics in post-synthesis environments.  
-For the adders, the prefix-based Kogge-Stone suffered from wiring overhead, allowing the simpler CSA to achieve a shorter critical path.  
-For the multipliers, the Modified Booth architecture benefited from aggressive optimization and logic folding, resulting in both reduced area and improved efficiency, while Baugh–Wooley’s structured datapath yielded strong timing closure.  
-Booth’s traditional Radix-2 implementation consistently trailed across all parameters, reinforcing its inefficiency for modern arithmetic datapaths under similar constraints.
+- The comparative results demonstrate how theoretical speed advantages can be offset by routing and interconnect parasitics in post-synthesis environments.  
+- For the adders, the prefix-based Kogge-Stone suffered from wiring overhead, allowing the simpler CSA to achieve a shorter critical path.  
+- For the multipliers, the Modified Booth architecture benefited from aggressive optimization and logic folding, resulting in both reduced area and improved efficiency, while Baugh–Wooley’s structured datapath yielded strong timing closure.  
+- Booth’s traditional Radix-2 implementation consistently trailed across all parameters, reinforcing its inefficiency for modern arithmetic datapaths under similar constraints.
 
 
 
