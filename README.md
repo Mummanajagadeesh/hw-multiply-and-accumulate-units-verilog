@@ -42,7 +42,7 @@ All designs were evaluated under identical synthesis and layout constraints usin
 #### GDS Visualizations
 | CSA | Kogge-Stone | RCA |
 |:--:|:--:|:--:|
-| <img src="adders/svgs/csa.svg" width="250"/> | <img src="adders/svgs/kogge.svg" width="250"/> | <img src="adders/svgs/rca.svg" width="250"/> |
+| <img src="adders/svgs/csa.png" width="250"/> | <img src="adders/svgs/kogge.png" width="250"/> | <img src="adders/svgs/rca.png" width="250"/> |
 
 #### OpenROAD Layouts
 | CSA | Kogge-Stone | RCA |
@@ -90,7 +90,7 @@ All designs were evaluated under identical synthesis and layout constraints usin
 #### GDS Visualizations
 | MBE | Booth | Baugh–Wooley |
 |:--:|:--:|:--:|
-| <img src="multipliers/svgs/mbe.svg" width="250"/> | <img src="multipliers/svgs/booth.svg" width="250"/> | <img src="multipliers/svgs/baugh.svg" width="250"/> |
+| <img src="multipliers/svgs/mbe.png" width="250"/> | <img src="multipliers/svgs/booth.png" width="250"/> | <img src="multipliers/svgs/baugh.png" width="250"/> |
 
 #### OpenROAD Layouts
 | MBE | Booth | Baugh–Wooley |
