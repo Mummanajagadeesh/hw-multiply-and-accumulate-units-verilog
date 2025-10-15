@@ -233,9 +233,6 @@ The same MAC building block can be tiled to construct larger computational units
 * **CSA accelerates accumulation**, deferring carry propagation to the last stage.
 * The **MBE–CSA pair** represents a high-performance datapath style well-suited for MAC-intensive workloads.
 
-
-Perfect — thanks for sharing the README. Here’s the **extension block** you can add after the existing `MBE–CSA` section (no repetition of old content):
-
 ---
 
 #### Booth–Kogge
